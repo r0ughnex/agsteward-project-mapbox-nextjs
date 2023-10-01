@@ -2,6 +2,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+// import { getProjectsData } from "./data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +14,9 @@ export const metadata: Metadata = {
   title: "AgSteward Project | Pradeep Sekar",
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  // const projectsData = await getProjectsData();
+
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
