@@ -6,10 +6,40 @@ body {
   @apply p-0;
 }
 
+html {
+  @apply bg-gray-100;
+}
+
+body {
+  @screen max-md {
+    padding-top: var(--navbar-h-sm);
+  }
+
+  @screen md {
+    padding-left: var(--navbar-w-md);
+  }
+}
+
 main {
   @apply p-6;
   @screen md {
     @apply p-8;
+  }
+}
+
+nav {
+  @apply fixed;
+  @apply top-0 left-0;
+  @apply bg-gray-900;
+
+  @screen max-md {
+    @apply w-full;
+    height: var(--navbar-h-sm);
+  }
+
+  @screen md {
+    @apply h-full;
+    width: var(--navbar-w-md);
   }
 }
 

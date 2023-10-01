@@ -1,7 +1,12 @@
 // Error must be a client component.
 "use client";
 
+import { Metadata } from "next";
 import { useEffect } from "react";
+
+export const metadata: Metadata = {
+  title: "AgSteward Project | Error | Pradeep",
+};
 
 interface ErrorProps {
   // 'digest' is the generated hash of the error that was thrown.

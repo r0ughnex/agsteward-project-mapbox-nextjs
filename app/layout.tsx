@@ -11,7 +11,7 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: "AgSteward Project | Pradeep Sekar",
+  title: "AgSteward Project | Pradeep",
 };
 
 export default async function RootLayout({ children }: RootLayoutProps) {
@@ -19,7 +19,13 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <nav>
+          <br />
+        </nav>
+
+        {children}
+      </body>
     </html>
   );
 }

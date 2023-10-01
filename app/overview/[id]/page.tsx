@@ -1,7 +1,13 @@
-// 'id' is a required route param for retrieving project data.
+import { Metadata } from "next";
+
+// 'id' is a required param for getting project data.
 interface OverviewProps {
   params: { id: string };
 }
+
+export const metadata: Metadata = {
+  title: "AgSteward Project | Overview | Pradeep",
+};
 
 export default function Overview({ params }: OverviewProps) {
   return (

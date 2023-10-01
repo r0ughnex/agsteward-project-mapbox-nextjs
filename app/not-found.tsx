@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AgSteward Project | Not found | Pradeep",
+};
+
 export default function NotFound() {
   return (
     <main>

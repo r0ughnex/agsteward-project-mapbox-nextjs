@@ -1,2 +1,8 @@
 @tailwind base;
 @tailwind utilities;
+
+:root {
+  /* Vars for Navbar. */
+  --navbar-h-sm: 60px;
+  --navbar-w-md: 80px;
+}

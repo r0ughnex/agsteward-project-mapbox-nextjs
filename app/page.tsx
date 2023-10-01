@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AgSteward Project | Home | Pradeep",
+};
+
 export default function Projects() {
   return (
     <main>
