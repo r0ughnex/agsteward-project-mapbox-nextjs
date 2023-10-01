@@ -1,4 +1,4 @@
-export async function getProjectsData() {
+export async function getProjectsDataFromAPI() {
   const { API_DATAURL_PROJECTS = "" } = process?.env || {};
 
   if (!API_DATAURL_PROJECTS) {

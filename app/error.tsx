@@ -1,4 +1,3 @@
-// Error must be a client component.
 "use client";
 
 import { Metadata } from "next";

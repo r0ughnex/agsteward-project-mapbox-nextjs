@@ -1,9 +1,10 @@
 import "./globals.scss";
+import { Metadata } from "next";
 import { ReactNode } from "react";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
-// import { getProjectsData } from "./data";
+import { getProjectsDataFromAPI } from "./data";
+import { DataContextProvider } from "@/context/DataContext/DataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,16 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  // const projectsData = await getProjectsData();
+  const projectsData = await getProjectsDataFromAPI();
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main>{children}</main>
+
+        <DataContextProvider projects={projectsData}>
+          <main>{children}</main>
+        </DataContextProvider>
       </body>
     </html>
   );
