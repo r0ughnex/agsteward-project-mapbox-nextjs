@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Overview({ params }: OverviewProps) {
   return (
-    <main>
+    <>
       <h1>Overview {params.id}</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -19,6 +19,6 @@ export default function Overview({ params }: OverviewProps) {
       <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-    </main>
+    </>
   );
 }

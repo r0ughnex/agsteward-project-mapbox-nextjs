@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AgSteward Project | Home | Pradeep",
+  title: "AgSteward Project | Projects | Pradeep",
 };
 
 export default function Projects() {
   return (
-    <main>
+    <>
       <h1>Projects</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -14,6 +14,6 @@ export default function Projects() {
       <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-    </main>
+    </>
   );
 }

@@ -23,7 +23,7 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error.message]);
 
   return (
-    <main>
+    <>
       <h1>Error</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -31,6 +31,6 @@ export default function Error({ error, reset }: ErrorProps) {
       <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
       <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-    </main>
+    </>
   );
 }

@@ -23,20 +23,20 @@ const config: Config = {
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
 
-      "max-sm": { raw: "(max-height: 639px)" },
-      // => @media (max-height: 639px) { ... }
+      "max-sm": { raw: "(max-width: 639px)" },
+      // => @media (max-width: 639px) { ... }
 
-      "max-md": { raw: "(max-height: 767px)" },
-      // => @media (max-height: 767px) { ... }
+      "max-md": { raw: "(max-width: 767px)" },
+      // => @media (max-width: 767px) { ... }
 
-      "max-lg": { raw: "(max-height: 1023px)" },
-      // => @media (max-height: 1023px) { ... }
+      "max-lg": { raw: "(max-width: 1023px)" },
+      // => @media (max-width: 1023px) { ... }
 
-      "max-xl": { raw: "(max-height: 1279px)" },
-      // => @media (max-height: 1279px) { ... }
+      "max-xl": { raw: "(max-width: 1279px)" },
+      // => @media (max-width: 1279px) { ... }
 
-      "max-2xl": { raw: "(max-height: 1535px)" },
-      // => @media (max-height: 1535px) { ... }
+      "max-2xl": { raw: "(max-width: 1535px)" },
+      // => @media (max-width: 1535px) { ... }
     },
   },
   plugins: [],

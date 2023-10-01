@@ -27,22 +27,6 @@ main {
   }
 }
 
-nav {
-  @apply fixed;
-  @apply top-0 left-0;
-  @apply bg-gray-900;
-
-  @screen max-md {
-    @apply w-full;
-    height: var(--navbar-h-sm);
-  }
-
-  @screen md {
-    @apply h-full;
-    width: var(--navbar-w-md);
-  }
-}
-
 h1,
 p,
 a,
@@ -57,11 +41,11 @@ button {
 }
 
 h1 {
-  @apply text-3xl;
+  @apply text-2xl;
   @apply font-bold;
 
   @screen md {
-    @apply text-4xl;
+    @apply text-3xl;
   }
 }
 

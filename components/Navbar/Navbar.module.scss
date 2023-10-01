@@ -1,0 +1,52 @@
+.Navbar {
+  --navbar-logo-size-sm: 48px;
+  --navbar-logo-size-md: 56px;
+
+  @apply fixed;
+  @apply top-0 left-0;
+  @apply bg-gray-900;
+
+  @screen max-md {
+    @apply w-full;
+    height: var(--navbar-h-sm);
+  }
+
+  @screen md {
+    @apply h-full;
+    width: var(--navbar-w-md);
+  }
+}
+
+.NavbarInner {
+  @apply flex;
+  @apply h-full;
+
+  @screen max-md {
+    @apply items-center;
+    @apply px-4;
+  }
+
+  @screen md {
+    @apply justify-center;
+    @apply py-6;
+  }
+}
+
+.NavbarLogo {
+  @apply text-lime-200;
+
+  @screen max-md {
+    width: var(--navbar-logo-size-sm);
+    height: var(--navbar-logo-size-sm);
+  }
+
+  @screen md {
+    width: var(--navbar-logo-size-md);
+    height: var(--navbar-logo-size-md);
+  }
+}
+
+.NavbarLogoSvg {
+  @apply w-full;
+  @apply h-full;
+}
