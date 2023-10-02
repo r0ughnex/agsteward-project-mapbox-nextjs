@@ -1,4 +1,5 @@
 import ProjectCards from "@/containers/ProjectCards/ProjectCards";
+import PageTitle from "@/components/PageTitle/PageTitle";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 export default function Projects() {
   return (
     <>
-      <h1>Projects</h1>
+      <PageTitle>Projects</PageTitle>
       <ProjectCards />
     </>
   );

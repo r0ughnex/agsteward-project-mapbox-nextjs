@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { memo, useState, SyntheticEvent } from "react";
 import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
-import styles from "./LazyMapImage.module.scss";
 import encodeMgmtAreaGeoJSON from "@/utils/encodeMgmtAreaGeoJSON";
+
+import styles from "./LazyMapImage.module.scss";
 
 interface LazyMapImageProps {
   managementAreasGeoJSON?: string;

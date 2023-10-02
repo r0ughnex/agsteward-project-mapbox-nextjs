@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import PageTitle from "@/components/PageTitle/PageTitle";
+import PageContent from "@/components/PageContent/PageContent";
 
 // 'id' is a required param for getting project data.
 interface OverviewProps {
@@ -10,15 +12,12 @@ export const metadata: Metadata = {
 };
 
 export default function Overview({ params }: OverviewProps) {
+  const { id = "0" } = params || {};
+
   return (
     <>
-      <h1>Overview {params.id}</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <PageTitle>Overview</PageTitle>
+      <PageContent>This is the overview page for project {id}.</PageContent>
     </>
   );
 }

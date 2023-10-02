@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import PageTitle from "@/components/PageTitle/PageTitle";
+import PageContent from "@/components/PageContent/PageContent";
 
 export const metadata: Metadata = {
   title: "AgSteward Project | Unknown | Pradeep",
@@ -7,13 +9,8 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <h1>Not found</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <PageTitle>Not found</PageTitle>
+      <PageContent>The page you are looking for does not exist.</PageContent>
     </>
   );
 }

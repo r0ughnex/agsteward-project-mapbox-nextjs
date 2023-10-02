@@ -2,6 +2,8 @@
 
 import { Metadata } from "next";
 import { useEffect } from "react";
+import PageTitle from "@/components/PageTitle/PageTitle";
+import PageContent from "@/components/PageContent/PageContent";
 
 export const metadata: Metadata = {
   title: "AgSteward Project | Error | Pradeep",
@@ -23,13 +25,8 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <>
-      <h1>Error</h1>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <PageTitle>Error</PageTitle>
+      <PageContent>Something went wrong, please try again later.</PageContent>
     </>
   );
 }
