@@ -1,0 +1,43 @@
+.ProjectCards {
+  @apply grid;
+  @apply gap-7;
+  @apply grid-cols-1;
+
+  @screen md {
+    @apply gap-9;
+    @apply grid-cols-2;
+  }
+
+  @screen lg {
+    @apply grid-cols-3;
+  }
+
+  @screen xl {
+    @apply grid-cols-4;
+  }
+}
+
+.ProjectCard {
+  @apply bg-white;
+  @apply rounded-2xl;
+}
+
+.ProjectCardInner {
+  @apply p-5;
+}
+
+.ProjectCardText {
+  @apply text-sm;
+}
+
+.ProjectCardImage {
+  @apply relative;
+  @apply rounded-2xl;
+  @apply bg-gray-100;
+}
+
+.ProjectCardImageElem {
+  @apply object-cover;
+  @apply object-center;
+  @apply text-transparent;
+}
