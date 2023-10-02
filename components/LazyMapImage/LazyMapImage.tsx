@@ -2,8 +2,10 @@ import Image from "next/image";
 import { memo, useState, SyntheticEvent } from "react";
 import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
 import styles from "./LazyMapImage.module.scss";
+import encodeMgmtAreaGeoJSON from "@/utils/encodeMgmtAreaGeoJSON";
 
 interface LazyMapImageProps {
+  managementAreasGeoJSON?: string;
   longitude: number;
   latitude: number;
   height: number;
@@ -19,11 +21,14 @@ function LazyMapImage({
   height,
   latitude,
   longitude,
+  managementAreasGeoJSON,
 }: LazyMapImageProps) {
+  const geoJSON = encodeMgmtAreaGeoJSON(managementAreasGeoJSON);
   const [hasLoaded, setHasLoaded] = useState(false);
   const staticMapImageURL = getStaticMapImageURL({
     width,
     height,
+    geoJSON,
     latitude,
     longitude,
     label: id,

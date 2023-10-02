@@ -1,6 +1,7 @@
 interface GetStaticMapURLProps {
   longitude: number;
   latitude: number;
+  geoJSON?: string;
   height: number;
   width: number;
   zoom?: number;
@@ -26,7 +27,10 @@ export default function getStaticMapImageURL({
   zoom = 14,
   scale = 2,
   label = 0,
+  // geoJSON,
   color = "111827",
 }: GetStaticMapURLProps) {
+  /* return `${getMapboxAPIDataURL()}/styles/v1/mapbox/light-v11/static/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${getMapboxAccessToken()}`; */
+
   return `${getMapboxAPIDataURL()}/styles/v1/mapbox/light-v11/static/pin-l-${label}+${color}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${getMapboxAccessToken()}`;
 }
