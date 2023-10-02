@@ -1,0 +1,24 @@
+.LazyMapImage {
+  @apply z-0;
+  @apply relative;
+  @apply rounded-2xl;
+  @apply bg-gray-100;
+  @apply overflow-hidden;
+}
+
+.LazyMapImageElem {
+  @apply object-cover;
+  @apply object-center;
+  @apply text-transparent;
+}
+
+.LazyMapImageElemDefault {
+  @extend .LazyMapImageElem;
+  @apply opacity-0;
+}
+
+.LazyMapImageElemLoaded {
+  @extend .LazyMapImageElem;
+  @apply transition-opacity;
+  @apply opacity-100;
+}

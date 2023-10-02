@@ -18,6 +18,7 @@
 }
 
 .ProjectCard {
+  @apply relative;
   @apply bg-white;
   @apply rounded-2xl;
 }
@@ -28,16 +29,19 @@
 
 .ProjectCardText {
   @apply text-sm;
+  @apply font-medium;
 }
 
-.ProjectCardImage {
-  @apply relative;
-  @apply rounded-2xl;
-  @apply bg-gray-100;
+.ProjectCardCoords {
+  @apply left-7 top-7;
+  @apply absolute z-10;
+  @apply bg-lime-100;
+  @apply rounded-xl;
+  @apply p-3;
 }
 
-.ProjectCardImageElem {
-  @apply object-cover;
-  @apply object-center;
-  @apply text-transparent;
+.ProjectCardCoordsValue {
+  @apply text-gray-900;
+  @apply font-medium;
+  @apply text-sm;
 }

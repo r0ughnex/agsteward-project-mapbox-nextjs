@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
-import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
 import getUniqueKey from "@/utils/getUniqueKey";
 import styles from "./ProjectCards.module.scss";
 
@@ -20,32 +19,25 @@ export default function ProjectCards() {
           longitude = 0,
         } = project || {};
 
-        const [width, height] = [400, 200];
-        const aspectRatio = `${width} / ${height}`;
         const key = `${id || getUniqueKey()}_${index}`;
-        const staticMapImageURL = getStaticMapImageURL({
-          label: id,
+        const lazyMapImageProps = {
+          height: 200,
+          width: 400,
           longitude,
           latitude,
-          height,
-          width,
-        });
+          id,
+        };
 
         return (
           <div className={styles.ProjectCard} key={key}>
             <div className={styles.ProjectCardInner}>
-              <div className={styles.ProjectCardImage} style={{ aspectRatio }}>
-                {staticMapImageURL && (
-                  <Image
-                    fill
-                    unoptimized
-                    loading="lazy"
-                    src={staticMapImageURL}
-                    alt="Map of project management area"
-                    className={styles.ProjectCardImageElem}
-                  />
-                )}
+              <div className={styles.ProjectCardCoords}>
+                <p className={styles.ProjectCardCoordsValue}>
+                  {latitude.toFixed(2)}, {longitude.toFixed(2)}
+                </p>
               </div>
+
+              <LazyMapImage {...lazyMapImageProps} />
 
               <h4 className={styles.ProjectCardTitle}>
                 {name || "Unknown Project"}

@@ -42,6 +42,5 @@ export function useProjectWithId(id: string) {
 
     setProject(projectWithId || null);
   }, [projects, prevId, id]);
-
   return project;
 }

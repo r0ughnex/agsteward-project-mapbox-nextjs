@@ -9,6 +9,15 @@ interface GetStaticMapURLProps {
   color?: string;
 }
 
+function getMapboxAPIDataURL() {
+  return "https://api.mapbox.com";
+}
+
+function getMapboxAccessToken() {
+  // @TODO: This token is public, but ideally it should be restricted when deployed to production.
+  return "pk.eyJ1IjoicjB1Z2huZXgiLCJhIjoiY2xuN3ZyN2NpMHAzczJybDgzNTkxd25vbCJ9.Wu8R0lgUBVrP1w5IvTVLDw";
+}
+
 export default function getStaticMapImageURL({
   width,
   height,
@@ -19,12 +28,5 @@ export default function getStaticMapImageURL({
   label = 0,
   color = "111827",
 }: GetStaticMapURLProps) {
-  const { NEXT_PUBLIC_API_DATAURL_MAPBOX, NEXT_PUBLIC_API_TOKEN_MAPBOX } =
-    process?.env || {};
-
-  if (!NEXT_PUBLIC_API_DATAURL_MAPBOX || !NEXT_PUBLIC_API_TOKEN_MAPBOX) {
-    return "";
-  }
-
-  return `${NEXT_PUBLIC_API_DATAURL_MAPBOX}/styles/v1/mapbox/light-v11/static/pin-l-${label}+${color}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${NEXT_PUBLIC_API_TOKEN_MAPBOX}`;
+  return `${getMapboxAPIDataURL()}/styles/v1/mapbox/light-v11/static/pin-l-${label}+${color}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${getMapboxAccessToken()}`;
 }

@@ -1,8 +1,9 @@
+import { memo } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import { GlobeAsiaAustraliaIcon } from "@heroicons/react/24/outline";
 
-export default function Navbar() {
+function Navbar() {
   return (
     <nav className={styles.Navbar}>
       <div className={styles.NavbarInner}>
@@ -13,3 +14,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default memo(Navbar);
