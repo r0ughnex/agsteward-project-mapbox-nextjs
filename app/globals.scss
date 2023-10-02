@@ -8,6 +8,7 @@ body {
 
 html {
   @apply bg-gray-100;
+  @apply text-gray-400;
 }
 
 body {
@@ -28,9 +29,13 @@ main {
 }
 
 h1,
+h2,
+h3,
+h4,
 p,
 a,
 button {
+  margin: 1em 0;
   &:first-child {
     @apply mt-0;
   }
@@ -40,12 +45,43 @@ button {
   }
 }
 
+h1,
+h2,
+h3,
+h4 {
+  @apply font-bold;
+  @apply text-gray-900;
+}
+
 h1 {
   @apply text-2xl;
-  @apply font-bold;
 
   @screen md {
     @apply text-3xl;
+  }
+}
+
+h2 {
+  @apply text-xl;
+
+  @screen md {
+    @apply text-2xl;
+  }
+}
+
+h3 {
+  @apply text-lg;
+
+  @screen md {
+    @apply text-xl;
+  }
+}
+
+h4 {
+  @apply text-base;
+
+  @screen md {
+    @apply text-lg;
   }
 }
 
@@ -53,7 +89,6 @@ p,
 a,
 button {
   @apply text-sm;
-  @apply font-normal;
 
   @screen md {
     @apply text-base;

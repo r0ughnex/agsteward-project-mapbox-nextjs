@@ -6,7 +6,9 @@ import Navbar from "@/components/Navbar/Navbar";
 import { getProjectsDataFromAPI } from "./data";
 import { DataContextProvider } from "@/context/DataContext/DataContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const interGooleFont = Inter({
+  subsets: ["latin"],
+});
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -21,7 +23,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={interGooleFont.className}>
         <Navbar />
 
         <DataContextProvider projects={projectsData}>

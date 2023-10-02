@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className={styles.Navbar}>
       <div className={styles.NavbarInner}>
-        <Link className={styles.NavbarLogo} href="/" title="Go to Projects">
+        <Link className={styles.NavbarLogo} title="Go to Projects" href="/">
           <GlobeAsiaAustraliaIcon className={styles.NavbarLogoSvg} />
         </Link>
       </div>
