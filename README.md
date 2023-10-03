@@ -1,6 +1,14 @@
 # AgSteward Project | Pradeep Sekar
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a sample app created for the AgSteward project, as part of a technical interview.
+
+You can find more information about the requirements of the technical challenge [here](https://github.com/LapisIT/react-nextjs-challenge).
+
+This is also a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Deployed to Vercel
+
+[agsteward-project-mapbox-nextjs.vercel.app](https://agsteward-project-mapbox-nextjs.vercel.app/)
 
 ## Getting Started
 
