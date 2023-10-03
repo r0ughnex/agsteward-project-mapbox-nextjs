@@ -8,7 +8,7 @@ This is also a [Next.js](https://nextjs.org/) project bootstrapped with [`create
 
 ## Deployed to Vercel
 
-[agsteward-project-mapbox-nextjs.vercel.app](https://agsteward-project-mapbox-nextjs.vercel.app/)
+[`agsteward-project-mapbox-nextjs.vercel.app`](https://agsteward-project-mapbox-nextjs.vercel.app/)
 
 ## Getting Started
 
