@@ -1,0 +1,38 @@
+.LazyMapImage {
+  @apply rounded-2xl;
+  @apply relative z-0;
+  @apply overflow-hidden;
+  @apply transition-colors;
+  @apply flex justify-center items-center;
+}
+
+.LazyMapImageDefault {
+  @extend .LazyMapImage;
+  @apply bg-gray-100;
+}
+
+.LazyMapImageHasError {
+  @extend .LazyMapImage;
+  @apply bg-red-100;
+}
+
+.LazyMapImageElem {
+  @apply text-transparent;
+  @apply transition-opacity;
+  @apply object-cover object-center;
+}
+
+.LazyMapImageElemDefault {
+  @extend .LazyMapImageElem;
+  @apply opacity-0;
+}
+
+.LazyMapImageElemHasLoaded {
+  @extend .LazyMapImageElem;
+  @apply opacity-100;
+}
+
+.LazyMapImageWarningIcon {
+  @apply text-red-400;
+  @apply w-16 h-16;
+}

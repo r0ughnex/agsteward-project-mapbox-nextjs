@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind utilities;
+
+/* Shared CSS variables. */
+:root {
+  /* For shared Navbar. */
+  --navbar-h-sm: 70px;
+  --navbar-w-md: 80px;
+}

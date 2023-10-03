@@ -1,0 +1,95 @@
+.ProjectCards {
+  @apply grid;
+  @apply gap-7;
+  @apply grid-cols-1;
+
+  @screen md {
+    @apply gap-9;
+    @apply grid-cols-2;
+  }
+
+  @screen lg {
+    @apply grid-cols-3;
+  }
+
+  @screen xl {
+    @apply grid-cols-4;
+  }
+}
+
+.ProjectCard {
+  @apply relative;
+  @apply bg-white;
+  @apply rounded-2xl;
+  @apply no-underline;
+}
+
+.ProjectCardInner {
+  @apply p-5;
+}
+
+.ProjectCardIcon {
+  @apply block mr-1.5;
+  @apply w-4;
+  @apply h-4;
+}
+
+.ProjectCardChip {
+  @apply bg-lime-100;
+  @apply rounded-xl;
+  @apply p-3;
+}
+
+.ProjectCardChipValue {
+  @apply text-lime-800;
+  @apply items-center;
+  @apply font-medium;
+  @apply text-sm;
+  @apply flex;
+}
+
+.ProjectCardContent {
+  @apply justify-between;
+  @apply flex mt-5;
+}
+
+.ProjectCardContentRight {
+  @apply text-center;
+}
+
+.ProjectCardContentTitle,
+.ProjectCardContentSubtitle {
+  @apply mb-0;
+}
+
+.ProjectCardContentText {
+  @apply text-gray-400;
+  @apply font-medium;
+  @apply text-sm;
+  @apply mt-2;
+}
+
+.ProjectCardCoords,
+.ProjectCardContentAreas {
+  @extend .ProjectCardChip;
+}
+
+.ProjectCardCoords {
+  @apply absolute z-10;
+  @apply left-7 top-7;
+}
+
+.ProjectCardContentAreas {
+  @apply py-2 mt-3;
+  @apply inline-block;
+  @apply relative;
+}
+
+.ProjectCardCoordsValue,
+.ProjectCardContentAreasValue {
+  @extend .ProjectCardChipValue;
+}
+
+.ProjectCardContentAreasValue {
+  @apply text-xs;
+}
