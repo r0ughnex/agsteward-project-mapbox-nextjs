@@ -4,10 +4,10 @@ import {
   MapPinIcon,
   GlobeAsiaAustraliaIcon as WorldIcon,
 } from "@heroicons/react/24/outline";
-import { motion, AnimationProps } from "framer-motion";
 // import getFAreaCoordsFromGeoJSON from "@/utils/getFAreaCoordsFromGeoJSON";
 import getNoOfAreasFromGeoJSON from "@/utils/getNoOfAreasFromGeoJSON";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
+import PageContent from "@/components/PageContent/PageContent";
 import { useProjectsList } from "@/context/DataContext/hooks";
 import getUniqueKey from "@/utils/getUniqueKey";
 import Link from "next/link";
@@ -17,19 +17,8 @@ import styles from "./ProjectCards.module.scss";
 function ProjectCards() {
   const projectsList = useProjectsList();
 
-  const projectCardsAnimProps: AnimationProps = {
-    transition: { type: "tween", delay: 0.4 },
-    initial: { opacity: 0, y: 10 },
-    animate: { opacity: 1, y: 0 },
-  };
-
-  const projectCardsProps = {
-    ...projectCardsAnimProps,
-    className: styles.ProjectCards,
-  };
-
   return (
-    <motion.div {...projectCardsProps}>
+    <PageContent className={styles.ProjectCards} elementTag="div">
       {projectsList.map((project, index) => {
         const {
           id,
@@ -99,7 +88,7 @@ function ProjectCards() {
           </Link>
         );
       })}
-    </motion.div>
+    </PageContent>
   );
 }
 
