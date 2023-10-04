@@ -10,14 +10,14 @@ interface GetStaticMapURLProps {
   color?: string;
 }
 
-function getMapboxAPIDataURL() {
-  return "https://api.mapbox.com";
-}
+const MapboxConfig = {
+  StaticMapDataURLLight:
+    "https://api.mapbox.com/styles/v1/mapbox/light-v11/static",
 
-function getMapboxAccessToken() {
-  // @TODO: This token is public, but ideally it should be restricted when deployed to production.
-  return "pk.eyJ1IjoicjB1Z2huZXgiLCJhIjoiY2xuN3ZyN2NpMHAzczJybDgzNTkxd25vbCJ9.Wu8R0lgUBVrP1w5IvTVLDw";
-}
+  PublicAccessToken:
+    // @TODO: Token is public, but ideally it should be restricted when deployed to production.
+    "pk.eyJ1IjoicjB1Z2huZXgiLCJhIjoiY2xuN3ZyN2NpMHAzczJybDgzNTkxd25vbCJ9.Wu8R0lgUBVrP1w5IvTVLDw",
+} as const;
 
 export default function getStaticMapImageURL({
   width,
@@ -30,7 +30,7 @@ export default function getStaticMapImageURL({
   // geoJSON,
   color = "111827",
 }: GetStaticMapURLProps) {
-  /* return `${getMapboxAPIDataURL()}/styles/v1/mapbox/light-v11/static/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${getMapboxAccessToken()}`; */
+  /* return `${MapboxConfig.StaticMapDataURLLight}/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`; */
 
-  return `${getMapboxAPIDataURL()}/styles/v1/mapbox/light-v11/static/pin-l-${label}+${color}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${getMapboxAccessToken()}`;
+  return `${MapboxConfig.StaticMapDataURLLight}/pin-l-${label}+${color}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`;
 }
