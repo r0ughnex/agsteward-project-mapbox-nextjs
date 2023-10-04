@@ -10,7 +10,9 @@ export default function NotFound() {
   return (
     <>
       <PageTitle>Not found</PageTitle>
-      <PageContent>The page you are looking for does not exist.</PageContent>
+      <PageContent elementTag="section">
+        <p>The page you are looking for does not exist.</p>
+      </PageContent>
     </>
   );
 }
