@@ -1,0 +1,98 @@
+@import "globals.css";
+
+html,
+body {
+  @apply m-0;
+  @apply p-0;
+}
+
+html {
+  @apply bg-gray-100;
+  @apply text-gray-400;
+}
+
+body {
+  @screen max-md {
+    padding-top: var(--navbar-h-sm);
+  }
+
+  @screen md {
+    padding-left: var(--navbar-w-md);
+  }
+}
+
+main {
+  @apply p-6;
+  @screen md {
+    @apply p-8;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+button {
+  margin: 1em 0;
+  &:first-child {
+    @apply mt-0;
+  }
+
+  &:last-child {
+    @apply mb-0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-bold;
+  @apply text-gray-900;
+}
+
+h1 {
+  @apply text-2xl;
+
+  @screen md {
+    @apply text-3xl;
+  }
+}
+
+h2 {
+  @apply text-xl;
+
+  @screen md {
+    @apply text-2xl;
+  }
+}
+
+h3 {
+  @apply text-lg;
+
+  @screen md {
+    @apply text-xl;
+  }
+}
+
+h4 {
+  @apply text-base;
+
+  @screen md {
+    @apply text-lg;
+  }
+}
+
+p,
+a,
+button {
+  @apply text-sm;
+
+  @screen md {
+    @apply text-base;
+  }
+}

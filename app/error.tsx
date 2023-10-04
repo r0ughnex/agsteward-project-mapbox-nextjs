@@ -1,7 +1,13 @@
-// Error must be a client component.
 "use client";
 
+import { Metadata } from "next";
 import { useEffect } from "react";
+import PageTitle from "@/components/PageTitle/PageTitle";
+import PageContent from "@/components/PageContent/PageContent";
+
+export const metadata: Metadata = {
+  title: "AgSteward Project | Error | Pradeep",
+};
 
 interface ErrorProps {
   // 'digest' is the generated hash of the error that was thrown.
@@ -18,8 +24,9 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error.message]);
 
   return (
-    <main>
-      <h1>Error</h1>
-    </main>
+    <>
+      <PageTitle>Error</PageTitle>
+      <PageContent>Something went wrong, please try again later.</PageContent>
+    </>
   );
 }
