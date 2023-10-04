@@ -1,9 +1,8 @@
 .Navbar {
-  --navbar-logo-size-sm: 48px;
-  --navbar-logo-size-md: 52px;
+  --navbar-icon-size-sm: 45px;
+  --navbar-icon-size-md: 50px;
 
-  @apply z-50;
-  @apply fixed;
+  @apply fixed z-50;
   @apply top-0 left-0;
   @apply bg-gray-900;
 
@@ -19,35 +18,58 @@
 }
 
 .NavbarInner {
-  @apply flex;
-  @apply h-full;
+  @apply box-border;
+  @apply flex h-full;
+  @apply items-center;
+  @apply justify-between;
 
   @screen max-md {
-    @apply items-center;
+    @apply flex-row;
     @apply px-4;
   }
 
   @screen md {
-    @apply justify-center;
+    @apply flex-col;
     @apply py-6;
   }
 }
 
-.NavbarLogo {
-  @apply text-lime-200;
+.NavbarIcon {
+  @apply block m-0;
+  @apply box-border;
 
   @screen max-md {
-    width: var(--navbar-logo-size-sm);
-    height: var(--navbar-logo-size-sm);
+    width: var(--navbar-icon-size-sm);
+    height: var(--navbar-icon-size-sm);
   }
 
   @screen md {
-    width: var(--navbar-logo-size-md);
-    height: var(--navbar-logo-size-md);
+    width: var(--navbar-icon-size-md);
+    height: var(--navbar-icon-size-md);
   }
 }
 
-.NavbarLogoSvg {
+.NavbarIconSvg {
   @apply w-full;
   @apply h-full;
+}
+
+.NavbarLogoIcon,
+.NavbarCodeIcon {
+  @extend .NavbarIcon;
+}
+
+.NavbarLogoIcon {
+  @apply text-lime-200;
+  @apply p-0;
+}
+
+.NavbarCodeIcon {
+  @apply text-white;
+  @apply p-1.5;
+}
+
+.NavbarLogoIconSvg,
+.NavbarCodeIconSvg {
+  @extend .NavbarIconSvg;
 }

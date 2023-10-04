@@ -9,7 +9,7 @@ import styles from "./PageContent.module.scss";
 interface PageContentProps {
   children: ReactNode;
   className?: string;
-  elementTag?: "p" | "div" | "section";
+  elementTag?: "div" | "section";
 }
 
 function MotionRoot({ elementTag }: Pick<PageContentProps, "elementTag">) {
@@ -18,13 +18,9 @@ function MotionRoot({ elementTag }: Pick<PageContentProps, "elementTag">) {
       return motion.section;
     }
 
-    case "div": {
-      return motion.div;
-    }
-
-    case "p":
+    case "div":
     default: {
-      return motion.p;
+      return motion.div;
     }
   }
 }

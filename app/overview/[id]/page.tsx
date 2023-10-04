@@ -17,7 +17,9 @@ export default function Overview({ params }: OverviewProps) {
   return (
     <>
       <PageTitle>Overview</PageTitle>
-      <PageContent>This is the overview page for project {id}.</PageContent>
+      <PageContent elementTag="section">
+        <p>This is the overview page for project {id}.</p>
+      </PageContent>
     </>
   );
 }
