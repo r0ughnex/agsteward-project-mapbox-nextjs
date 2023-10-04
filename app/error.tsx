@@ -26,7 +26,9 @@ export default function Error({ error, reset }: ErrorProps) {
   return (
     <>
       <PageTitle>Error</PageTitle>
-      <PageContent>Something went wrong, please try again later.</PageContent>
+      <PageContent elementTag="section">
+        <p>Something went wrong, please try again later.</p>
+      </PageContent>
     </>
   );
 }

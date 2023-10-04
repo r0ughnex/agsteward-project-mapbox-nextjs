@@ -6,6 +6,10 @@ export default function getFAreaCoordsFromGeoJSON(geoJSON = "[]") {
   }
 
   try {
+    /**
+     * @TODO: Need to write an algorithm to find the center of the geometry,
+     * but until then, just use the first coords and zoom out a little bit.
+     */
     let [longitude, latitude] = areas[0]?.geometry?.coordinates[0][0];
 
     if (longitude[1]) {
