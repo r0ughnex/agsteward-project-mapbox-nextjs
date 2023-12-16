@@ -1,6 +1,8 @@
-import { Metadata } from "next";
+import PageContent, {
+  PageContentInfo,
+} from "@/components/PageContent/PageContent";
 import PageTitle from "@/components/PageTitle/PageTitle";
-import PageContent from "@/components/PageContent/PageContent";
+import { Metadata } from "next";
 
 // 'id' is a required param for getting project data.
 interface OverviewProps {
@@ -18,7 +20,9 @@ export default function Overview({ params }: OverviewProps) {
     <>
       <PageTitle>Overview</PageTitle>
       <PageContent elementTag="section">
-        <p>This is the overview page for project {id}.</p>
+        <PageContentInfo>
+          This is the overview page for project {id}.
+        </PageContentInfo>
       </PageContent>
     </>
   );

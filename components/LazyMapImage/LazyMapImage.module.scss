@@ -8,7 +8,7 @@
 
 .LazyMapImageDefault {
   @extend .LazyMapImage;
-  @apply bg-gray-100;
+  @apply bg-theme-grey-light;
 }
 
 .LazyMapImageHasError {
@@ -33,6 +33,6 @@
 }
 
 .LazyMapImageWarningIcon {
-  @apply text-red-400;
+  @apply text-red-500;
   @apply w-16 h-16;
 }

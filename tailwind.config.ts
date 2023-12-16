@@ -38,6 +38,29 @@ const config: Config = {
       "max-2xl": { raw: "(max-width: 1535px)" },
       // => @media (max-width: 1535px) { ... }
     },
+
+    extend: {
+      colors: {
+        // Custom grey.
+        "theme-grey": {
+          DEFAULT: "#abaeb4",
+          light: "#f5f5f5",
+          dark: "#1a1a1b",
+        },
+
+        // Custom green.
+        "theme-green": {
+          DEFAULT: "#b0ec82",
+          light: "#e0f7cd",
+        },
+
+        // Custom orange.
+        "theme-orange": {
+          DEFAULT: "#ff961c",
+          light: "#ffd5a4",
+        },
+      },
+    },
   },
   plugins: [],
 };

@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { memo } from "react";
 import { Routes } from "@/app/routes";
 import GithubIcon from "@/icons/github.svg";
 import { GlobeAsiaAustraliaIcon as WorldIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import Link from "next/link";
+import { memo } from "react";
 
 import styles from "./Navbar.module.scss";
 

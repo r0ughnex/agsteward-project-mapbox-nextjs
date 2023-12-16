@@ -1,15 +1,15 @@
 "use client";
 
+import { Routes } from "@/app/routes";
+import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
+import { useProjectsList } from "@/context/DataContext/hooks";
+// import getAreaCoordsFromGeoJSON from "@/utils/getAreaCoordsFromGeoJSON";
+import getNoOfAreasFromGeoJSON from "@/utils/getNoOfAreasFromGeoJSON";
+import getUniqueKey from "@/utils/getUniqueKey";
 import {
   MapPinIcon,
   GlobeAsiaAustraliaIcon as WorldIcon,
 } from "@heroicons/react/24/outline";
-import { Routes } from "@/app/routes";
-// import getFAreaCoordsFromGeoJSON from "@/utils/getFAreaCoordsFromGeoJSON";
-import getNoOfAreasFromGeoJSON from "@/utils/getNoOfAreasFromGeoJSON";
-import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
-import { useProjectsList } from "@/context/DataContext/hooks";
-import getUniqueKey from "@/utils/getUniqueKey";
 import Link from "next/link";
 
 import styles from "./ProjectCards.module.scss";
@@ -29,7 +29,7 @@ function ProjectCards() {
           managementAreasGeoJSON,
         } = project || {};
 
-        /* const { latitude, longitude } = getFAreaCoordsFromGeoJSON(
+        /* const { latitude, longitude } = getAreaCoordsFromGeoJSON(
           managementAreasGeoJSON
         ); */
 

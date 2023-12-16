@@ -1,4 +1,4 @@
-export default function getFAreaCoordsFromGeoJSON(geoJSON = "[]") {
+export default function getAreaCoordsFromGeoJSON(geoJSON = "[]") {
   const areas = JSON.parse(geoJSON);
 
   if (!Array.isArray(areas)) {
@@ -22,7 +22,7 @@ export default function getFAreaCoordsFromGeoJSON(geoJSON = "[]") {
 
     return { latitude, longitude };
   } catch (error: unknown | any) {
-    console.error(error?.message);
+    console.warn(error?.message);
     return { latitude: 0, longitude: 0 };
   }
 }

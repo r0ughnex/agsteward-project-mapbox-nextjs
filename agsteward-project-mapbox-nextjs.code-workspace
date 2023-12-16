@@ -16,7 +16,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "scss.lint.unknownAtRules": "ignore",
     "editor.codeActionsOnSave": {
-      "source.fixAll": true
+      "source.organizeImports": "explicit",
+      "source.fixAll": "explicit"
     }
   }
 }

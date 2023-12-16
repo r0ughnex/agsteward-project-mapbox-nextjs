@@ -1,6 +1,8 @@
-import { Metadata } from "next";
+import PageContent, {
+  PageContentInfo,
+} from "@/components/PageContent/PageContent";
 import PageTitle from "@/components/PageTitle/PageTitle";
-import PageContent from "@/components/PageContent/PageContent";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AgSteward Project | Unknown | Pradeep",
@@ -11,7 +13,9 @@ export default function NotFound() {
     <>
       <PageTitle>Not found</PageTitle>
       <PageContent elementTag="section">
-        <p>The page you are looking for does not exist.</p>
+        <PageContentInfo>
+          The page you are looking for does not exist.
+        </PageContentInfo>
       </PageContent>
     </>
   );

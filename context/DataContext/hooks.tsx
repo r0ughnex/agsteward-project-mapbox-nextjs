@@ -1,15 +1,15 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
-import { APIResponseData } from "./types";
-import { DataContext } from "./DataContext";
 import usePrevious from "@/hooks/usePrevious";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "./DataContext";
+import { APIResponseData } from "./types";
 
 export function useDataContext() {
   const context = useContext(DataContext);
 
   if (!context)
-    throw Error(
+    throw new Error(
       "'DataContext' is not available in this scope, please make sure you're calling it inside '<DataContextProvider />'."
     );
 

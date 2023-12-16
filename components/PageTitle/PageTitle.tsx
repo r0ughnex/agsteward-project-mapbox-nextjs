@@ -13,7 +13,16 @@ interface PageTitleProps {
 }
 
 function MotionRoot({ elementTag }: Pick<PageTitleProps, "elementTag">) {
-  return elementTag === "h1" ? motion.h1 : motion.h2;
+  switch (elementTag) {
+    case "h2": {
+      return motion.h2;
+    }
+
+    case "h1":
+    default: {
+      return motion.h1;
+    }
+  }
 }
 
 function PageTitle({ children, className, elementTag }: PageTitleProps) {

@@ -7,8 +7,8 @@ body {
 }
 
 html {
-  @apply bg-gray-100;
-  @apply text-gray-400;
+  @apply text-theme-grey;
+  @apply bg-theme-grey-light;
 }
 
 body {
@@ -52,7 +52,7 @@ h3,
 h4,
 h5 {
   @apply font-bold;
-  @apply text-gray-900;
+  @apply text-theme-grey-dark;
 }
 
 h1 {
@@ -91,8 +91,18 @@ p,
 a,
 button {
   @apply text-sm;
+  @apply font-medium;
 
   @screen md {
     @apply text-base;
   }
+}
+
+a,
+button {
+  @apply text-theme-orange;
+}
+
+p {
+  @apply text-theme-grey;
 }

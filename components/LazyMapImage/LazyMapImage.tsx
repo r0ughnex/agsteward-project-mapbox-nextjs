@@ -1,8 +1,8 @@
-import Image from "next/image";
-import { memo, useState, SyntheticEvent } from "react";
-import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
 import encodeMgmtAreaGeoJSON from "@/utils/encodeMgmtAreaGeoJSON";
+import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
 import { ExclamationTriangleIcon as WarningIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import { SyntheticEvent, memo, useState } from "react";
 
 import styles from "./LazyMapImage.module.scss";
 

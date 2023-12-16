@@ -18,6 +18,7 @@
 }
 
 .ProjectCard {
+  @apply m-0;
   @apply relative;
   @apply bg-white;
   @apply rounded-2xl;
@@ -35,15 +36,14 @@
 }
 
 .ProjectCardChip {
-  @apply bg-lime-100;
+  @apply bg-theme-green-light;
   @apply rounded-xl;
   @apply p-3;
 }
 
 .ProjectCardChipValue {
-  @apply text-lime-800;
+  @apply text-theme-grey-dark;
   @apply items-center;
-  @apply font-medium;
   @apply text-sm;
   @apply flex;
 }
@@ -69,7 +69,6 @@
 }
 
 .ProjectCardContentText {
-  @apply text-gray-400;
   @apply font-medium;
   @apply text-sm;
   @apply mt-3;
