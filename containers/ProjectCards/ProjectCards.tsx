@@ -3,8 +3,7 @@
 import { Routes } from "@/app/routes";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
-// import getAreaCoordsFromGeoJSON from "@/utils/getAreaCoordsFromGeoJSON";
-import getNoOfAreasFromGeoJSON from "@/utils/getNoOfAreasFromGeoJSON";
+// import getCenterCoordsOfAreas from "@/utils/getCenterCoordsOfAreas";
 import getUniqueKey from "@/utils/getUniqueKey";
 import {
   MapPinIcon,
@@ -26,14 +25,11 @@ function ProjectCards() {
           address,
           latitude = 0,
           longitude = 0,
+          managementAreas,
           managementAreasGeoJSON,
         } = project || {};
 
-        /* const { latitude, longitude } = getAreaCoordsFromGeoJSON(
-          managementAreasGeoJSON
-        ); */
-
-        const noOfAreas = getNoOfAreasFromGeoJSON(managementAreasGeoJSON);
+        // const { latitude, longitude } = getCenterCoordsOfAreas(managementAreas);
         const coords = `${longitude.toFixed(2)}, ${latitude.toFixed(2)}`;
         const key = `${id || getUniqueKey()}_${index}`;
         const lazyMapImageProps = {
@@ -79,7 +75,7 @@ function ProjectCards() {
                   <div className={styles.ProjectCardContentAreas}>
                     <p className={styles.ProjectCardContentAreasValue}>
                       <WorldIcon className={styles.ProjectCardIcon} />
-                      <span>{noOfAreas}</span>
+                      <span>{managementAreas?.length || 0}</span>
                     </p>
                   </div>
                 </div>
