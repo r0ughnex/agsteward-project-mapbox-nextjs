@@ -1,6 +1,6 @@
 "use client";
 
-import { isModeProd } from "@/utils/env";
+import { isModeDev } from "@/utils/environment";
 import classNames from "classnames";
 import { AnimationProps, motion } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
@@ -56,10 +56,10 @@ function PageContentInfo({ children, className }: PageContentInfoProps) {
   const infoElemRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
-    if (!isModeProd()) {
-      // Only perform checks when not in 'production' mode.
+    if (isModeDev()) {
+      // Only perform this check when in 'development' mode.
       const parentElem = infoElemRef.current?.parentElement;
-      if (!parentElem?.closest("[class^='PageContent_']")) {
+      if (!parentElem?.closest("[class^='PageContent']")) {
         throw new Error(
           "'<PageContentInfo />' must be rendered within a parent '<PageContent />'."
         );

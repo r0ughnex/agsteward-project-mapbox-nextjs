@@ -3,8 +3,8 @@
 import { Routes } from "@/app/routes";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
-// import getCenterCoordsOfAreas from "@/utils/getCenterCoordsOfAreas";
-import getUniqueKey from "@/utils/getUniqueKey";
+// import { getCenterOfAreas } from "@/utils/managementAreas";
+import { getUniqueKey } from "@/utils/common";
 import {
   MapPinIcon,
   GlobeAsiaAustraliaIcon as WorldIcon,
@@ -29,7 +29,7 @@ function ProjectCards() {
           managementAreasGeoJSON,
         } = project || {};
 
-        // const { latitude, longitude } = getCenterCoordsOfAreas(managementAreas);
+        // const { latitude, longitude } = getCenterOfAreas(managementAreas);
         const coords = `${longitude.toFixed(2)}, ${latitude.toFixed(2)}`;
         const key = `${id || getUniqueKey()}_${index}`;
         const lazyMapImageProps = {

@@ -1,5 +1,5 @@
-import getEncodedAreasGeoJSON from "@/utils/getEncodedAreasGeoJSON";
-import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
+import { encodeAreasGeoJSON } from "@/utils/managementAreas";
+import { getStaticMapImageURL } from "@/utils/mapbox";
 import { ExclamationTriangleIcon as WarningIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import Image from "next/image";
@@ -26,7 +26,7 @@ function LazyMapImage({
   longitude,
   managementAreasGeoJSON,
 }: LazyMapImageProps) {
-  const geoJSON = getEncodedAreasGeoJSON(managementAreasGeoJSON);
+  const geoJSON = encodeAreasGeoJSON(managementAreasGeoJSON);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const staticMapImageURL = getStaticMapImageURL({
@@ -50,16 +50,16 @@ function LazyMapImage({
     <div
       style={{ aspectRatio: `${width} / ${height}` }}
       className={classNames({
-        [styles.LazyMapImageHasError]: hasError,
         [styles.LazyMapImageDefault]: !hasError,
+        [styles.LazyMapImageHasError]: hasError,
       })}
     >
       {staticMapImageURL && !hasError && (
         <Image
           alt={alt || "Image of map, marking the project coordinates."}
           className={classNames({
-            [styles.LazyMapImageElemHasLoaded]: hasLoaded,
             [styles.LazyMapImageElemDefault]: !hasLoaded,
+            [styles.LazyMapImageElemHasLoaded]: hasLoaded,
           })}
           src={staticMapImageURL}
           onError={onImageError}
