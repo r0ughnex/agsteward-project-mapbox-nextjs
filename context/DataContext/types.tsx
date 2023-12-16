@@ -16,8 +16,50 @@ export interface APIResponseData {
   id?: number;
 }
 
+export type ManagementAreaCoords = number[][][][] | number[][][];
+
+// Add the relevant types here, when they are available from the API.
+export type ManagementAreaGeometryType = "Polygon" | "MultiPolygon";
+
+export type ManagementAreaPropertyType = "Remnant management";
+
+export type ManagementAreaType = "Feature";
+
+export type ManagementAreaRegion = "NNRM";
+
+export interface ManagementAreaProperty {
+  // Type of the area and its project.
+  type?: ManagementAreaPropertyType;
+  Region?: ManagementAreaRegion;
+  projID?: string;
+
+  // Name of the area.
+  Area_name?: string;
+  P_Area?: string;
+  name?: string;
+
+  // Total hectares.
+  area_ha?: number;
+  Area_ha?: number;
+}
+
+export interface ManagementAreaGeometry {
+  coordinates?: ManagementAreaCoords;
+  type?: ManagementAreaGeometryType;
+}
+
+export interface ProjectManagementArea {
+  properties?: ManagementAreaProperty;
+  geometry?: ManagementAreaGeometry;
+  type?: ManagementAreaType;
+}
+
+export interface ProjectsData extends APIResponseData {
+  managementAreas?: ProjectManagementArea[];
+}
+
 export interface DataContextProviderProps {
-  projects: APIResponseData[];
+  projects: ProjectsData[];
   children: ReactNode;
 }
 

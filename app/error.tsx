@@ -20,7 +20,7 @@ interface ErrorProps {
 }
 
 export default function Error({ error, reset }: ErrorProps) {
-  const hasErrorMessage = error?.message?.length > 0;
+  const hasErrorMessage = !!error?.message?.length;
 
   useEffect(() => {
     // Log the error that triggered this component to render.

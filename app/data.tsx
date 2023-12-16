@@ -1,3 +1,5 @@
+import { APIResponseData } from "@/context/DataContext/types";
+
 export async function getProjectsDataFromAPI() {
   const { API_DATAURL_PROJECTS } = process?.env || {};
 
@@ -7,7 +9,7 @@ export async function getProjectsDataFromAPI() {
   }
 
   const response = await fetch(API_DATAURL_PROJECTS, {
-    // Purge the data cache and re-fetch the latest data every 5 minutes.
+    // Purge data cache and re-fetch the latest data every 5 minutes.
     next: { revalidate: 300 },
   });
 
@@ -15,5 +17,6 @@ export async function getProjectsDataFromAPI() {
     throw new Error("Failed to fetch data from the API for projects.");
   }
 
-  return response.json();
+  // We only care about the body which contains the data.
+  return response.json() as unknown as APIResponseData[];
 }
