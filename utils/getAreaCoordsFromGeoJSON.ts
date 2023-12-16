@@ -22,7 +22,7 @@ export default function getAreaCoordsFromGeoJSON(geoJSON = "[]") {
 
     return { latitude, longitude };
   } catch (error: unknown | any) {
-    console.warn(error?.message);
+    console.log(error?.message);
     return { latitude: 0, longitude: 0 };
   }
 }

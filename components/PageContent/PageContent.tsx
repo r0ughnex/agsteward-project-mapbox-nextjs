@@ -1,10 +1,10 @@
 "use client";
 
+import { isModeProd } from "@/utils/env";
 import classNames from "classnames";
 import { AnimationProps, motion } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
 
-import { isModeProd } from "@/utils/env";
 import styles from "./PageContent.module.scss";
 
 interface PageContentProps {

@@ -24,7 +24,7 @@ export default function Error({ error, reset }: ErrorProps) {
 
   useEffect(() => {
     // Log the error that triggered this component to render.
-    hasErrorMessage && console.warn(error.message);
+    hasErrorMessage && console.error(error.message);
   }, [hasErrorMessage, error?.message]);
 
   return (

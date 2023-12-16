@@ -1,8 +1,8 @@
 "use client";
 
-import { ReactNode } from "react";
 import classNames from "classnames";
-import { motion, AnimationProps } from "framer-motion";
+import { AnimationProps, motion } from "framer-motion";
+import { ReactNode } from "react";
 
 import styles from "./PageTitle.module.scss";
 
