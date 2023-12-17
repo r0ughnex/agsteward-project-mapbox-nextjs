@@ -87,6 +87,14 @@ h4 {
   }
 }
 
+h5 {
+  @apply text-sm;
+
+  @screen md {
+    @apply text-base;
+  }
+}
+
 p,
 a,
 button {

@@ -4,10 +4,11 @@ import { Routes } from "@/app/routes";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
 // import { getCenterOfAreas } from "@/utils/managementAreas";
-import { getUniqueKey } from "@/utils/common";
+import { getUniqueKey, roundNumber } from "@/utils/common";
+import { getTotalSizeOfAreas } from "@/utils/managementAreas";
 import {
+  Square2StackIcon as AreaIcon,
   MapPinIcon,
-  GlobeAsiaAustraliaIcon as WorldIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -30,7 +31,9 @@ function ProjectCards() {
         } = project || {};
 
         // const { latitude, longitude } = getCenterOfAreas(managementAreas);
-        const coords = `${longitude.toFixed(2)}, ${latitude.toFixed(2)}`;
+        const coords = `${roundNumber(longitude)}, ${roundNumber(latitude)}`;
+        const totalSize = getTotalSizeOfAreas(managementAreas);
+        const noOfAreas = managementAreas?.length || 0;
         const key = `${id || getUniqueKey()}_${index}`;
         const lazyMapImageProps = {
           managementAreasGeoJSON,
@@ -57,25 +60,25 @@ function ProjectCards() {
               </div>
 
               <LazyMapImage {...lazyMapImageProps} />
-
               <div className={styles.ProjectCardContent}>
-                <div className={styles.ProjectCardContentLeft}>
+                <div className={styles.ProjectCardContentTop}>
                   <h4 className={styles.ProjectCardContentTitle}>
                     {name || "Unknown Project"}
                   </h4>
 
+                  <h5 className={styles.ProjectCardContentSubtitle}>
+                    {noOfAreas} Area{noOfAreas !== 1 ? "s" : ""}
+                  </h5>
+                </div>
+                <div className={styles.ProjectCardContentBottom}>
                   <p className={styles.ProjectCardContentText}>
                     {address || "Address not available"}
                   </p>
-                </div>
 
-                <div className={styles.ProjectCardContentRight}>
-                  <h5 className={styles.ProjectCardContentSubtitle}>Areas</h5>
-
-                  <div className={styles.ProjectCardContentAreas}>
-                    <p className={styles.ProjectCardContentAreasValue}>
-                      <WorldIcon className={styles.ProjectCardIcon} />
-                      <span>{managementAreas?.length || 0}</span>
+                  <div className={styles.ProjectCardAreasSize}>
+                    <p className={styles.ProjectCardAreasSizeValue}>
+                      <AreaIcon className={styles.ProjectCardIcon} />
+                      <span>{roundNumber(totalSize)} ha</span>
                     </p>
                   </div>
                 </div>

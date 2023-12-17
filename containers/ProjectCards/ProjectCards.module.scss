@@ -1,7 +1,7 @@
 .ProjectCards {
-  @apply grid;
-  @apply gap-7;
+  @apply grid gap-7;
   @apply grid-cols-1;
+  grid-auto-rows: 1fr;
 
   @screen md {
     @apply gap-9;
@@ -18,64 +18,98 @@
 }
 
 .ProjectCard {
+  --pcard-sub-title-w-min: 100px;
+  --pcard-text-title-w-max: 270px;
+
   @apply m-0;
   @apply relative;
   @apply bg-white;
-  @apply rounded-2xl;
-  @apply no-underline;
+  @apply rounded-2xl no-underline;
 }
 
 .ProjectCardInner {
+  @apply flex flex-col justify-between;
+  @apply box-border h-full;
   @apply p-5;
 }
 
-.ProjectCardIcon {
-  @apply block mr-1.5;
-  @apply w-4;
-  @apply h-4;
-}
-
-.ProjectCardChip {
-  @apply bg-theme-green-light;
-  @apply rounded-xl;
-  @apply p-3;
-}
-
-.ProjectCardChipValue {
-  @apply text-theme-grey-dark;
-  @apply items-center;
-  @apply text-sm;
-  @apply flex;
-}
-
 .ProjectCardContent {
-  @apply justify-between;
-  @apply flex mt-5;
+  @apply mt-5;
 }
 
-.ProjectCardContentLeft {
-  @apply box-border;
-  max-width: 270px;
-  @apply pr-5;
+.ProjectCardContentInner {
+  @apply flex justify-between;
 }
 
-.ProjectCardContentRight {
-  @apply text-center;
+.ProjectCardContentTop {
+  @extend .ProjectCardContentInner;
 }
 
+.ProjectCardContentBottom {
+  @extend .ProjectCardContentInner;
+  @apply items-start;
+  @apply mt-1;
+}
+
+.ProjectCardContentText,
 .ProjectCardContentTitle,
 .ProjectCardContentSubtitle {
-  @apply mb-0;
+  @apply m-0;
+}
+
+.ProjectCardContentText,
+.ProjectCardContentTitle {
+  max-width: var(--pcard-text-title-w-max);
+  @apply pr-3;
+}
+
+.ProjectCardContentSubtitle {
+  @apply flex items-end justify-center;
+  @apply font-semibold leading-none;
+  &:last-child {
+    @apply mb-0.35e;
+
+    @screen md {
+      @apply mb-0.4e;
+    }
+  }
 }
 
 .ProjectCardContentText {
   @apply font-medium;
+  &:first-child {
+    @apply mt-0.35e;
+
+    @screen md {
+      @apply mt-0.4e;
+    }
+  }
+}
+
+.ProjectCardAreasSize,
+.ProjectCardContentSubtitle {
+  min-width: var(--pcard-sub-title-w-min);
+}
+
+.ProjectCardIcon {
+  @apply block mr-1.5;
+  @apply w-4.5 h-4.5;
+}
+
+.ProjectCardChip {
+  @apply bg-theme-green-light;
+  @apply rounded-xl box-border;
+  @apply p-3;
+}
+
+.ProjectCardChipValue {
+  @apply flex items-center justify-center;
+  @apply text-theme-grey-dark;
   @apply text-sm;
-  @apply mt-3;
 }
 
 .ProjectCardCoords,
-.ProjectCardContentAreas {
+.ProjectCardAreasSize {
   @extend .ProjectCardChip;
 }
 
@@ -84,17 +118,13 @@
   @apply left-7 top-7;
 }
 
-.ProjectCardContentAreas {
+.ProjectCardAreasSize {
   @apply inline-block;
-  @apply py-2 mt-3;
   @apply relative;
+  @apply py-2;
 }
 
 .ProjectCardCoordsValue,
-.ProjectCardContentAreasValue {
+.ProjectCardAreasSizeValue {
   @extend .ProjectCardChipValue;
-}
-
-.ProjectCardContentAreasValue {
-  @apply text-xs;
 }

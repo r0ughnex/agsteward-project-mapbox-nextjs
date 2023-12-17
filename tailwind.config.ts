@@ -40,6 +40,18 @@ const config: Config = {
     },
 
     extend: {
+      spacing: {
+        "4.5": "1.125rem",
+        "5.5": "1.375rem",
+        "6.5": "2.375rem",
+      },
+
+      margin: {
+        "0.35e": "0.35em",
+        "0.4e": "0.4em",
+        "0.5e": "0.5em",
+      },
+
       colors: {
         // Custom grey.
         "theme-grey": {
