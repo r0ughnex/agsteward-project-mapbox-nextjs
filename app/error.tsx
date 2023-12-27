@@ -1,9 +1,11 @@
 "use client";
 
+import PageContent, {
+  PageContentInfo,
+} from "@/components/PageContent/PageContent";
+import PageTitle from "@/components/PageTitle/PageTitle";
 import { Metadata } from "next";
 import { useEffect } from "react";
-import PageTitle from "@/components/PageTitle/PageTitle";
-import PageContent from "@/components/PageContent/PageContent";
 
 export const metadata: Metadata = {
   title: "AgSteward Project | Error | Pradeep",
@@ -18,16 +20,20 @@ interface ErrorProps {
 }
 
 export default function Error({ error, reset }: ErrorProps) {
+  const hasErrorMessage = !!error?.message?.length;
+
   useEffect(() => {
     // Log the error that triggered this component to render.
-    console.error(error.message);
-  }, [error.message]);
+    hasErrorMessage && console.error(error.message);
+  }, [hasErrorMessage, error?.message]);
 
   return (
     <>
       <PageTitle>Error</PageTitle>
       <PageContent elementTag="section">
-        <p>Something went wrong, please try again later.</p>
+        <PageContentInfo>
+          Something went wrong, please try again later.
+        </PageContentInfo>
       </PageContent>
     </>
   );

@@ -1,8 +1,9 @@
 "use client";
 
-import { ReactNode } from "react";
+import { isModeDev } from "@/utils/environment";
 import classNames from "classnames";
-import { motion, AnimationProps } from "framer-motion";
+import { AnimationProps, motion } from "framer-motion";
+import { ReactNode, useEffect, useRef } from "react";
 
 import styles from "./PageContent.module.scss";
 
@@ -10,6 +11,11 @@ interface PageContentProps {
   children: ReactNode;
   className?: string;
   elementTag?: "div" | "section";
+}
+
+interface PageContentInfoProps {
+  children: ReactNode;
+  className?: string;
 }
 
 function MotionRoot({ elementTag }: Pick<PageContentProps, "elementTag">) {
@@ -46,4 +52,30 @@ function PageContent({ children, className, elementTag }: PageContentProps) {
   );
 }
 
+function PageContentInfo({ children, className }: PageContentInfoProps) {
+  const infoElemRef = useRef<HTMLHeadingElement | null>(null);
+
+  useEffect(() => {
+    if (isModeDev()) {
+      // Only perform this check when in 'development' mode.
+      const parentElem = infoElemRef.current?.parentElement;
+      if (!parentElem?.closest("[class^='PageContent']")) {
+        throw new Error(
+          "'<PageContentInfo />' must be rendered within a parent '<PageContent />'."
+        );
+      }
+    }
+  }, []);
+
+  return (
+    <h4
+      ref={infoElemRef}
+      className={classNames(styles.PageContentInfo, className)}
+    >
+      {children}
+    </h4>
+  );
+}
+
 export default PageContent;
+export { PageContentInfo };

@@ -1,11 +1,12 @@
 import "./globals.scss";
 
-import { Metadata } from "next";
-import { ReactNode } from "react";
-import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
-import { getProjectsDataFromAPI } from "./data";
 import { DataContextProvider } from "@/context/DataContext/DataContext";
+import { parseAPIResponse } from "@/utils/api";
+import { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ReactNode } from "react";
+import { getProjectsDataFromAPI } from "./data";
 
 const interGooleFont = Inter({
   subsets: ["latin"],
@@ -20,7 +21,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const projectsData = await getProjectsDataFromAPI();
+  const apiResponse = await getProjectsDataFromAPI();
+  const projectsData = parseAPIResponse(apiResponse);
 
   return (
     <html lang="en">

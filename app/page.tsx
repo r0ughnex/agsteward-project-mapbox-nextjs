@@ -1,7 +1,7 @@
-import { Metadata } from "next";
-import PageTitle from "@/components/PageTitle/PageTitle";
 import PageContent from "@/components/PageContent/PageContent";
+import PageTitle from "@/components/PageTitle/PageTitle";
 import ProjectCards from "@/containers/ProjectCards/ProjectCards";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AgSteward Project | Projects | Pradeep",

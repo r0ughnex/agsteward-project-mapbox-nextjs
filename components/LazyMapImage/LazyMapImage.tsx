@@ -1,8 +1,12 @@
-import Image from "next/image";
-import { memo, useState, SyntheticEvent } from "react";
-import getStaticMapImageURL from "@/utils/getStaticMapImageURL";
-import encodeMgmtAreaGeoJSON from "@/utils/encodeMgmtAreaGeoJSON";
+import { encodeAreasGeoJSON } from "@/utils/managementAreas";
+import {
+  getStaticMapURLWithMarker,
+  getStaticMapURLWithPolygon,
+} from "@/utils/mapbox";
 import { ExclamationTriangleIcon as WarningIcon } from "@heroicons/react/24/outline";
+import classNames from "classnames";
+import Image from "next/image";
+import { SyntheticEvent, memo, useState } from "react";
 
 import styles from "./LazyMapImage.module.scss";
 
@@ -25,17 +29,25 @@ function LazyMapImage({
   longitude,
   managementAreasGeoJSON,
 }: LazyMapImageProps) {
-  const geoJSON = encodeMgmtAreaGeoJSON(managementAreasGeoJSON);
-  const [hasLoaded, setHasLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const staticMapImageURL = getStaticMapImageURL({
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const hasGeoJSON = !!managementAreasGeoJSON?.length;
+  const staicMapImageURLProps = {
     width,
     height,
-    geoJSON,
     latitude,
     longitude,
-    label: id,
-  });
+  };
+
+  const staticMapImageURL = !hasGeoJSON
+    ? getStaticMapURLWithMarker({
+        ...staicMapImageURLProps,
+        label: id,
+      })
+    : getStaticMapURLWithPolygon({
+        ...staicMapImageURLProps,
+        geoJSON: encodeAreasGeoJSON(managementAreasGeoJSON),
+      });
 
   const onImageLoad = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     setHasLoaded(true);
@@ -48,18 +60,18 @@ function LazyMapImage({
   return (
     <div
       style={{ aspectRatio: `${width} / ${height}` }}
-      className={
-        hasError ? styles.LazyMapImageHasError : styles.LazyMapImageDefault
-      }
+      className={classNames({
+        [styles.LazyMapImageDefault]: !hasError,
+        [styles.LazyMapImageHasError]: hasError,
+      })}
     >
       {staticMapImageURL && !hasError && (
         <Image
           alt={alt || "Image of map, marking the project coordinates."}
-          className={
-            hasLoaded
-              ? styles.LazyMapImageElemHasLoaded
-              : styles.LazyMapImageElemDefault
-          }
+          className={classNames({
+            [styles.LazyMapImageElemDefault]: !hasLoaded,
+            [styles.LazyMapImageElemHasLoaded]: hasLoaded,
+          })}
           src={staticMapImageURL}
           onError={onImageError}
           onLoad={onImageLoad}

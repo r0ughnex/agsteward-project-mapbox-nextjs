@@ -1,16 +1,16 @@
 "use client";
 
-import {
-  MapPinIcon,
-  GlobeAsiaAustraliaIcon as WorldIcon,
-} from "@heroicons/react/24/outline";
 import { Routes } from "@/app/routes";
-// import getFAreaCoordsFromGeoJSON from "@/utils/getFAreaCoordsFromGeoJSON";
-import getNoOfAreasFromGeoJSON from "@/utils/getNoOfAreasFromGeoJSON";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
-import getUniqueKey from "@/utils/getUniqueKey";
+import { getUniqueKey, roundNumber } from "@/utils/common";
+import { getTotalSizeOfAreas } from "@/utils/managementAreas";
+import {
+  Square2StackIcon as AreaIcon,
+  MapPinIcon,
+} from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { memo } from "react";
 
 import styles from "./ProjectCards.module.scss";
 
@@ -26,18 +26,14 @@ function ProjectCards() {
           address,
           latitude = 0,
           longitude = 0,
-          managementAreasGeoJSON,
+          managementAreas,
         } = project || {};
 
-        /* const { latitude, longitude } = getFAreaCoordsFromGeoJSON(
-          managementAreasGeoJSON
-        ); */
-
-        const noOfAreas = getNoOfAreasFromGeoJSON(managementAreasGeoJSON);
-        const coords = `${longitude.toFixed(2)}, ${latitude.toFixed(2)}`;
+        const coords = `${roundNumber(longitude)}, ${roundNumber(latitude)}`;
+        const totalSize = getTotalSizeOfAreas(managementAreas);
+        const noOfAreas = managementAreas?.length || 0;
         const key = `${id || getUniqueKey()}_${index}`;
         const lazyMapImageProps = {
-          managementAreasGeoJSON,
           height: 200,
           width: 400,
           longitude,
@@ -61,25 +57,25 @@ function ProjectCards() {
               </div>
 
               <LazyMapImage {...lazyMapImageProps} />
-
               <div className={styles.ProjectCardContent}>
-                <div className={styles.ProjectCardContentLeft}>
+                <div className={styles.ProjectCardContentTop}>
                   <h4 className={styles.ProjectCardContentTitle}>
                     {name || "Unknown Project"}
                   </h4>
 
+                  <h5 className={styles.ProjectCardContentSubtitle}>
+                    {noOfAreas} Area{noOfAreas !== 1 ? "s" : ""}
+                  </h5>
+                </div>
+                <div className={styles.ProjectCardContentBottom}>
                   <p className={styles.ProjectCardContentText}>
                     {address || "Address not available"}
                   </p>
-                </div>
 
-                <div className={styles.ProjectCardContentRight}>
-                  <h5 className={styles.ProjectCardContentSubtitle}>Areas</h5>
-
-                  <div className={styles.ProjectCardContentAreas}>
-                    <p className={styles.ProjectCardContentAreasValue}>
-                      <WorldIcon className={styles.ProjectCardIcon} />
-                      <span>{noOfAreas}</span>
+                  <div className={styles.ProjectCardAreasSize}>
+                    <p className={styles.ProjectCardAreasSizeValue}>
+                      <AreaIcon className={styles.ProjectCardIcon} />
+                      <span>{roundNumber(totalSize)} ha</span>
                     </p>
                   </div>
                 </div>
@@ -92,4 +88,4 @@ function ProjectCards() {
   );
 }
 
-export default ProjectCards;
+export default memo(ProjectCards);

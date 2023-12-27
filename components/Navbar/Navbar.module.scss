@@ -4,7 +4,7 @@
 
   @apply fixed z-50;
   @apply top-0 left-0;
-  @apply bg-gray-900;
+  @apply bg-theme-grey-dark;
 
   @screen max-md {
     @apply w-full;
@@ -60,7 +60,7 @@
 }
 
 .NavbarLogoIcon {
-  @apply text-lime-200;
+  @apply text-theme-green;
   @apply p-0;
 }
 
