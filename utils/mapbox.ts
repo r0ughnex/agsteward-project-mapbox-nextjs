@@ -1,15 +1,12 @@
 import { getColorThemeGrey } from "./tailwind";
 
 interface GetStaticMapURLProps {
-  longitude: number;
-  latitude: number;
-  geoJSON?: string;
-  height: number;
   width: number;
-  zoom?: number;
+  height: number;
+  latitude: number;
+  longitude: number;
   scale?: number;
-  label?: number;
-  color?: string;
+  zoom?: number;
 }
 
 const MapboxConfig = {
@@ -17,8 +14,30 @@ const MapboxConfig = {
   PublicAccessToken: process?.env?.NEXT_PUBLIC_MAPBOX_PERSONAL_ACCESS_TOKEN,
 } as const;
 
-export function getStaticMapImageURL({
+interface GetStaticMapURLWithMarkerProps extends GetStaticMapURLProps {
+  label?: number;
+  color?: string;
+}
+
+interface GetStaticMapURLWithPolygonProps extends GetStaticMapURLProps {
+  geoJSON: string;
+}
+
+export function getStaticMapURLWithMarker({
   color,
+  width,
+  height,
+  latitude,
+  longitude,
+  zoom = 14,
+  scale = 2,
+  label = 0,
+}: GetStaticMapURLWithMarkerProps) {
+  const pinColor = color || getColorThemeGrey(true).dark;
+  return `${MapboxConfig.StaticMapURLLight}/pin-l-${label}+${pinColor}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`;
+}
+
+export function getStaticMapURLWithPolygon({
   width,
   height,
   geoJSON,
@@ -26,10 +45,6 @@ export function getStaticMapImageURL({
   longitude,
   zoom = 14,
   scale = 2,
-  label = 0,
-}: GetStaticMapURLProps) {
-  const pinColor = color || getColorThemeGrey(true).dark;
-  /* return `${MapboxConfig.StaticMapURLLight}/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`; */
-
-  return `${MapboxConfig.StaticMapURLLight}/pin-l-${label}+${pinColor}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`;
+}: GetStaticMapURLWithPolygonProps) {
+  return `${MapboxConfig.StaticMapURLLight}/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`;
 }

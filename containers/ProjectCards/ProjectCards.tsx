@@ -3,7 +3,6 @@
 import { Routes } from "@/app/routes";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
-// import { getCenterOfAreas } from "@/utils/managementAreas";
 import { getUniqueKey, roundNumber } from "@/utils/common";
 import { getTotalSizeOfAreas } from "@/utils/managementAreas";
 import {
@@ -11,6 +10,7 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { memo } from "react";
 
 import styles from "./ProjectCards.module.scss";
 
@@ -27,16 +27,13 @@ function ProjectCards() {
           latitude = 0,
           longitude = 0,
           managementAreas,
-          managementAreasGeoJSON,
         } = project || {};
 
-        // const { latitude, longitude } = getCenterOfAreas(managementAreas);
         const coords = `${roundNumber(longitude)}, ${roundNumber(latitude)}`;
         const totalSize = getTotalSizeOfAreas(managementAreas);
         const noOfAreas = managementAreas?.length || 0;
         const key = `${id || getUniqueKey()}_${index}`;
         const lazyMapImageProps = {
-          managementAreasGeoJSON,
           height: 200,
           width: 400,
           longitude,
@@ -91,4 +88,4 @@ function ProjectCards() {
   );
 }
 
-export default ProjectCards;
+export default memo(ProjectCards);

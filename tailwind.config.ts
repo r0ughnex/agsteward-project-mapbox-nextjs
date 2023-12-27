@@ -47,9 +47,9 @@ const config: Config = {
       },
 
       margin: {
-        "0.35e": "0.35em",
-        "0.4e": "0.4em",
-        "0.5e": "0.5em",
+        "0.35em": "0.35em",
+        "0.4em": "0.4em",
+        "0.5em": "0.5em",
       },
 
       colors: {

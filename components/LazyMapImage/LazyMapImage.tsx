@@ -1,5 +1,8 @@
 import { encodeAreasGeoJSON } from "@/utils/managementAreas";
-import { getStaticMapImageURL } from "@/utils/mapbox";
+import {
+  getStaticMapURLWithMarker,
+  getStaticMapURLWithPolygon,
+} from "@/utils/mapbox";
 import { ExclamationTriangleIcon as WarningIcon } from "@heroicons/react/24/outline";
 import classNames from "classnames";
 import Image from "next/image";
@@ -26,17 +29,25 @@ function LazyMapImage({
   longitude,
   managementAreasGeoJSON,
 }: LazyMapImageProps) {
-  const geoJSON = encodeAreasGeoJSON(managementAreasGeoJSON);
-  const [hasLoaded, setHasLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const staticMapImageURL = getStaticMapImageURL({
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const hasGeoJSON = !!managementAreasGeoJSON?.length;
+  const staicMapImageURLProps = {
     width,
     height,
-    geoJSON,
     latitude,
     longitude,
-    label: id,
-  });
+  };
+
+  const staticMapImageURL = !hasGeoJSON
+    ? getStaticMapURLWithMarker({
+        ...staicMapImageURLProps,
+        label: id,
+      })
+    : getStaticMapURLWithPolygon({
+        ...staicMapImageURLProps,
+        geoJSON: encodeAreasGeoJSON(managementAreasGeoJSON),
+      });
 
   const onImageLoad = (event: SyntheticEvent<HTMLImageElement, Event>) => {
     setHasLoaded(true);

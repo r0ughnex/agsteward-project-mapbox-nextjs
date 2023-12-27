@@ -67,10 +67,10 @@
   @apply flex items-end justify-center;
   @apply font-semibold leading-none;
   &:last-child {
-    @apply mb-0.35e;
+    @apply mb-0.35em;
 
     @screen md {
-      @apply mb-0.4e;
+      @apply mb-0.4em;
     }
   }
 }
@@ -78,10 +78,10 @@
 .ProjectCardContentText {
   @apply font-medium;
   &:first-child {
-    @apply mt-0.35e;
+    @apply mt-0.35em;
 
     @screen md {
-      @apply mt-0.4e;
+      @apply mt-0.4em;
     }
   }
 }
