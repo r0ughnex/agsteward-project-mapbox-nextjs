@@ -13,7 +13,7 @@ export function roundNumber(value?: number, decimals = 2) {
     return 0;
   }
 
-  if (decimals < 0) {
+  if (!isNumber(decimals) || decimals < 0) {
     decimals = 0;
   }
 
