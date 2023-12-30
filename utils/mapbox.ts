@@ -9,10 +9,12 @@ interface GetStaticMapURLProps {
   zoom?: number;
 }
 
-const MapboxConfig = {
-  StaticMapURLLight: process?.env?.NEXT_PUBLIC_MAPBOX_STATIC_MAP_URL_LIGHT,
-  PublicAccessToken: process?.env?.NEXT_PUBLIC_MAPBOX_PERSONAL_ACCESS_TOKEN,
-} as const;
+function getMapboxConfig() {
+  return {
+    StaticMapURLLight: process?.env?.NEXT_PUBLIC_MAPBOX_STATIC_MAP_URL_LIGHT,
+    PublicAccessToken: process?.env?.NEXT_PUBLIC_MAPBOX_PERSONAL_ACCESS_TOKEN,
+  } as const;
+}
 
 interface GetStaticMapURLWithMarkerProps extends GetStaticMapURLProps {
   label?: number;
@@ -33,8 +35,9 @@ export function getStaticMapURLWithMarker({
   scale = 2,
   label = 0,
 }: GetStaticMapURLWithMarkerProps) {
-  const pinColor = color || getColorThemeGrey(true).dark;
-  return `${MapboxConfig.StaticMapURLLight}/pin-l-${label}+${pinColor}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`;
+  const mapboxConfig = getMapboxConfig();
+  const mapPinColor = color || getColorThemeGrey(true).dark;
+  return `${mapboxConfig.StaticMapURLLight}/pin-l-${label}+${mapPinColor}(${longitude},${latitude})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${mapboxConfig.PublicAccessToken}`;
 }
 
 export function getStaticMapURLWithPolygon({
@@ -46,5 +49,6 @@ export function getStaticMapURLWithPolygon({
   zoom = 14,
   scale = 2,
 }: GetStaticMapURLWithPolygonProps) {
-  return `${MapboxConfig.StaticMapURLLight}/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${MapboxConfig.PublicAccessToken}`;
+  const mapboxConfig = getMapboxConfig();
+  return `${mapboxConfig.StaticMapURLLight}/geojson(${geoJSON})/${longitude},${latitude},${zoom},0/${width}x${height}@${scale}x?attribution=false&logo=false&access_token=${mapboxConfig.PublicAccessToken}`;
 }

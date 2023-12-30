@@ -1,12 +1,13 @@
 import { NodeEnv, isModeDev, isModeProd, isModeTest } from "../environment";
 
 describe("utils/environment", () => {
-  const setNodeEnv = (env?: NodeJS.ProcessEnv["NODE_ENV"]) => {
-    (process.env as any).NODE_ENV = env || NodeEnv.Test;
+  const setNodeEnv = (env?: NodeEnv | string) => {
+    vi.stubEnv("NODE_ENV", env || NodeEnv.Test);
   };
 
-  const originalNodeEnv = process.env.NODE_ENV;
-  afterEach(() => setNodeEnv(originalNodeEnv));
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
 
   describe("isModeDev()", () => {
     test("should return 'true' if 'NODE_ENV' is 'development'", () => {

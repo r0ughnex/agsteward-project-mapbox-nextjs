@@ -15,7 +15,7 @@ describe("utils/common", () => {
 
       // All keys should be unique, i.e. no duplicates.
       const { size = 0 } = new Set(uniqueKeys);
-      expect(size).toEqual(uniqueKeys.length);
+      expect(size).toBe(uniqueKeys.length);
     });
   });
 
@@ -39,33 +39,33 @@ describe("utils/common", () => {
 
   describe("roundNumber()", () => {
     test("should return '0' if the given 'value' is not a 'number'", () => {
-      expect(roundNumber()).toEqual(0);
-      expect(roundNumber(undefined, 1)).toEqual(0);
-      expect(roundNumber(parseInt("N"), 2)).toEqual(0);
+      expect(roundNumber()).toBe(0);
+      expect(roundNumber(undefined, 1)).toBe(0);
+      expect(roundNumber(parseInt("N"), 2)).toBe(0);
     });
 
     test("should return the given 'value' if the no. of decimal points is <= required 'decimals'", () => {
-      expect(roundNumber(9, 1)).toEqual(9);
-      expect(roundNumber(9.8, 2)).toEqual(9.8);
-      expect(roundNumber(-10.001, 3)).toEqual(-10.001);
+      expect(roundNumber(9, 1)).toBe(9);
+      expect(roundNumber(9.8, 2)).toBe(9.8);
+      expect(roundNumber(-10.001, 3)).toBe(-10.001);
     });
 
     test("should round the 'value' up / down if the no. of decimal points is > required 'decimals'", () => {
-      expect(roundNumber(10.53, 0)).toEqual(11);
-      expect(roundNumber(10.66, 1)).toEqual(10.7);
-      expect(roundNumber(-9.8765, 2)).toEqual(-9.88);
+      expect(roundNumber(10.53, 0)).toBe(11);
+      expect(roundNumber(10.66, 1)).toBe(10.7);
+      expect(roundNumber(-9.8765, 2)).toBe(-9.88);
     });
 
     test("should round the 'value' up / down to '0' decimal points when 'decimals' provided is -ve", () => {
-      expect(roundNumber(10.0, -1)).toEqual(10);
-      expect(roundNumber(10.76, -2)).toEqual(11);
-      expect(roundNumber(-9.8754, -3)).toEqual(-10);
+      expect(roundNumber(10.0, -1)).toBe(10);
+      expect(roundNumber(10.76, -2)).toBe(11);
+      expect(roundNumber(-9.8754, -3)).toBe(-10);
     });
 
     test("should round the 'value' up / down to '2' decimal points when 'decimals' is not provided", () => {
-      expect(roundNumber(10.0)).toEqual(10);
-      expect(roundNumber(10.76)).toEqual(10.76);
-      expect(roundNumber(-9.8754)).toEqual(-9.88);
+      expect(roundNumber(10.0)).toBe(10);
+      expect(roundNumber(10.76)).toBe(10.76);
+      expect(roundNumber(-9.8754)).toBe(-9.88);
     });
   });
 });

@@ -2,11 +2,10 @@ import "./globals.scss";
 
 import Navbar from "@/components/Navbar/Navbar";
 import { DataContextProvider } from "@/context/DataContext/DataContext";
-import { parseAPIResponse } from "@/utils/api";
+import { getProjectsDataFromAPI, parseAPIResponse } from "@/utils/api";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
-import { getProjectsDataFromAPI } from "./data";
 
 const interGooleFont = Inter({
   subsets: ["latin"],
