@@ -15,6 +15,7 @@ export default defineConfig({
       include: ["**/*.ts", "**/*.tsx"],
       exclude: [
         ...excludeTestCoverageFrom,
+        "**/app/routes.*",
         "**/constants.*",
         "**/*config.*",
         "**/*mocks.*",
