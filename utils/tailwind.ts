@@ -1,11 +1,11 @@
-import customTailwindConfig from "@/tailwind.config";
+import customTailwindConfig, { CustomColor } from "@/tailwind.config";
 import resolveConfig from "tailwindcss/resolveConfig";
 
 function getTheme() {
   return resolveConfig(customTailwindConfig).theme;
 }
 
-function getThemeColor(name: string, removeHash = false) {
+function getThemeColor(name: CustomColor, removeHash = false) {
   const color = {
     ...(getTheme()?.colors?.[name] as Record<string, string>),
   };
@@ -20,8 +20,12 @@ function getThemeColor(name: string, removeHash = false) {
 }
 
 export function getColorThemeGrey(removeHash = false) {
-  // Destructured custom colors should exist in the 'tailwind.config.ts'.
-  const { DEFAULT, light, dark } = getThemeColor("theme-grey", removeHash);
+  // Destructured keys in custom color should exist in the 'tailwind.config.ts'.
+  const { DEFAULT, light, dark } = getThemeColor(
+    CustomColor.ThemeGrey,
+    removeHash
+  );
+
   return {
     DEFAULT,
     light,
@@ -29,18 +33,20 @@ export function getColorThemeGrey(removeHash = false) {
   };
 }
 
-export function getColorThemeOrange(removeHash = false) {
-  // Destructured custom colors should exist in the 'tailwind.config.ts'.
-  const { DEFAULT, light } = getThemeColor("theme-orange", removeHash);
+export function getColorThemeGreen(removeHash = false) {
+  // Destructured keys in custom color should exist in the 'tailwind.config.ts'.
+  const { DEFAULT, light } = getThemeColor(CustomColor.ThemeGreen, removeHash);
+
   return {
     DEFAULT,
     light,
   };
 }
 
-export function getColorThemeGreen(removeHash = false) {
-  // Destructured custom colors should exist in the 'tailwind.config.ts'.
-  const { DEFAULT, light } = getThemeColor("theme-green", removeHash);
+export function getColorThemeOrange(removeHash = false) {
+  // Destructured keys in custom color should exist in the 'tailwind.config.ts'.
+  const { DEFAULT, light } = getThemeColor(CustomColor.ThemeOrange, removeHash);
+
   return {
     DEFAULT,
     light,

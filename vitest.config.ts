@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 import react from "@vitejs/plugin-react";
+import path from "path";
 import { configDefaults, defineConfig } from "vitest/config";
 
 const { exclude: filesToExclude = [], coverage } = configDefaults;
@@ -28,5 +29,10 @@ export default defineConfig({
       "public/**",
       "icons/**",
     ],
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "."),
+    },
   },
 });

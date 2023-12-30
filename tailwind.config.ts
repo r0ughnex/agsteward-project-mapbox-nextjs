@@ -1,5 +1,11 @@
 import type { Config } from "tailwindcss";
 
+export enum CustomColor {
+  ThemeGrey = "theme-grey",
+  ThemeGreen = "theme-green",
+  ThemeOrange = "theme-orange",
+}
+
 const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -53,21 +59,18 @@ const config: Config = {
       },
 
       colors: {
-        // Custom grey.
-        "theme-grey": {
+        [CustomColor.ThemeGrey]: {
           DEFAULT: "#abaeb4",
           light: "#f5f5f5",
           dark: "#1a1a1b",
         },
 
-        // Custom green.
-        "theme-green": {
+        [CustomColor.ThemeGreen]: {
           DEFAULT: "#b0ec82",
           light: "#e0f7cd",
         },
 
-        // Custom orange.
-        "theme-orange": {
+        [CustomColor.ThemeOrange]: {
           DEFAULT: "#ff961c",
           light: "#ffd5a4",
         },
