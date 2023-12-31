@@ -1,10 +1,10 @@
 "use client";
 
-import { Routes } from "@/app/routes";
 import LazyMapImage from "@/components/LazyMapImage/LazyMapImage";
 import { useProjectsList } from "@/context/DataContext/hooks";
 import { getUniqueKey, roundNumber } from "@/utils/common";
 import { getTotalSizeOfAreas } from "@/utils/managementAreas";
+import { getOverviewRouteForProject } from "@/utils/routes";
 import {
   Square2StackIcon as AreaIcon,
   MapPinIcon,
@@ -46,7 +46,7 @@ function ProjectCards() {
             key={key}
             title={`Go to ${name}`}
             className={styles.ProjectCard}
-            href={Routes.Overview.replace("{id}", `${id}`)}
+            href={getOverviewRouteForProject(id)}
           >
             <div className={styles.ProjectCardInner}>
               <div className={styles.ProjectCardCoords}>

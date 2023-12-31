@@ -1,7 +1,7 @@
 "use client";
 
-import { Routes } from "@/app/routes";
 import GithubIcon from "@/icons/github.svg";
+import { Route } from "@/utils/routes";
 import { GlobeAsiaAustraliaIcon as WorldIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +14,7 @@ function Navbar() {
     <nav className={styles.Navbar}>
       <div className={styles.NavbarInner}>
         <Link
-          href={Routes.Home}
+          href={Route.Home}
           title="Go to Projects"
           className={styles.NavbarLogoIcon}
         >
@@ -22,7 +22,8 @@ function Navbar() {
         </Link>
 
         <Link
-          href={Routes.GithubRepo}
+          target="_blank"
+          href={Route.GithubRepo}
           title="View source on Github"
           className={styles.NavbarCodeIcon}
         >

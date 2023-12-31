@@ -4,16 +4,20 @@ export function getUniqueKey() {
   return uuidv4();
 }
 
-export function isNumber(value?: unknown) {
+export function isValidString(value?: unknown) {
+  return typeof value === "string" && !!value.length;
+}
+
+export function isValidNumber(value?: unknown) {
   return typeof value === "number" && !isNaN(value);
 }
 
 export function roundNumber(value?: number, decimals = 2) {
-  if (!isNumber(value)) {
+  if (!isValidNumber(value)) {
     return 0;
   }
 
-  if (!isNumber(decimals) || decimals < 0) {
+  if (!isValidNumber(decimals) || decimals < 0) {
     decimals = 0;
   }
 

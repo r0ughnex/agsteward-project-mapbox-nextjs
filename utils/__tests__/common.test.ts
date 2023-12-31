@@ -1,4 +1,9 @@
-import { getUniqueKey, isNumber, roundNumber } from "../common";
+import {
+  getUniqueKey,
+  isValidNumber,
+  isValidString,
+  roundNumber,
+} from "../common";
 
 describe("utils/common", () => {
   describe("getUniqueKey()", () => {
@@ -19,26 +24,44 @@ describe("utils/common", () => {
     });
   });
 
-  describe("isNumber()", () => {
-    test("should return 'false' if the 'value' is not a number", () => {
-      const invalidNumbers = [undefined, null, false, NaN, "", "N", "0"];
+  describe("isValidString()", () => {
+    test("should return 'false' if the 'value' is not a valid string", () => {
+      const invalidStrings = [undefined, null, false, 0, 99, parseInt("100")];
 
-      invalidNumbers.forEach((value) => {
-        expect(isNumber(value)).toBeFalsy();
+      invalidStrings.forEach((value) => {
+        expect(isValidString(value)).toBeFalsy();
       });
     });
 
-    test("should return 'true' if the given 'value' is a number", () => {
-      const validNumbers = [0, -10, parseInt("100"), parseFloat("1000.0")];
+    test("should return 'true' if the given 'value' is a valid string", () => {
+      const validStrings = ["0", "99", (100).toString(), JSON.stringify({})];
+
+      validStrings.forEach((value) => {
+        expect(isValidString(value)).toBeTruthy();
+      });
+    });
+  });
+
+  describe("isValidNumber()", () => {
+    test("should return 'false' if the 'value' is not a valid number", () => {
+      const invalidNumbers = [undefined, null, false, NaN, "", "N", "0"];
+
+      invalidNumbers.forEach((value) => {
+        expect(isValidNumber(value)).toBeFalsy();
+      });
+    });
+
+    test("should return 'true' if the given 'value' is a valid number", () => {
+      const validNumbers = [0, -10, parseInt("10"), parseFloat("100.0")];
 
       validNumbers.forEach((value) => {
-        expect(isNumber(value)).toBeTruthy();
+        expect(isValidNumber(value)).toBeTruthy();
       });
     });
   });
 
   describe("roundNumber()", () => {
-    test("should return '0' if the given 'value' is not a 'number'", () => {
+    test("should return '0' if the given 'value' is not a valid 'number'", () => {
       expect(roundNumber()).toBe(0);
       expect(roundNumber(undefined, 1)).toBe(0);
       expect(roundNumber(parseInt("N"), 2)).toBe(0);
