@@ -20,7 +20,7 @@ describe("utils/tailwind", () => {
     const colorThemeGreyDefault = (colors as any)?.[CustomColor.ThemeGrey];
     const colorThemeGreyNoHash = removeHashFromColor(colorThemeGreyDefault);
 
-    test("it should return the configured custom 'theme-grey' color ('removeHash' is 'false')", () => {
+    test("should return the configured custom 'theme-grey' color ('removeHash' is 'false')", () => {
       // By default 'removeHash' is set to be 'false'.
       expect(getColorThemeGrey(/* false */)).toEqual({
         DEFAULT: colorThemeGreyDefault.DEFAULT,
@@ -29,7 +29,7 @@ describe("utils/tailwind", () => {
       });
     });
 
-    test("it should return the configured custom 'theme-grey' color ('removeHash' is 'true')", () => {
+    test("should return the configured custom 'theme-grey' color ('removeHash' is 'true')", () => {
       expect(getColorThemeGrey(true)).toEqual({
         DEFAULT: colorThemeGreyNoHash.DEFAULT,
         light: colorThemeGreyNoHash.light,
@@ -43,7 +43,7 @@ describe("utils/tailwind", () => {
     const colorThemeGreenDefault = (colors as any)?.[CustomColor.ThemeGreen];
     const colorThemeGreenNoHash = removeHashFromColor(colorThemeGreenDefault);
 
-    test("it should return the configured custom 'theme-green' color ('removeHash' is 'false')", () => {
+    test("should return the configured custom 'theme-green' color ('removeHash' is 'false')", () => {
       // By default 'removeHash' is set to be 'false'.
       expect(getColorThemeGreen(/* false */)).toEqual({
         DEFAULT: colorThemeGreenDefault.DEFAULT,
@@ -51,7 +51,7 @@ describe("utils/tailwind", () => {
       });
     });
 
-    test("it should return the configured custom 'theme-green' color ('removeHash' is 'true')", () => {
+    test("should return the configured custom 'theme-green' color ('removeHash' is 'true')", () => {
       expect(getColorThemeGreen(true)).toEqual({
         DEFAULT: colorThemeGreenNoHash.DEFAULT,
         light: colorThemeGreenNoHash.light,
@@ -64,7 +64,7 @@ describe("utils/tailwind", () => {
     const colorThemeOrangeDefault = (colors as any)?.[CustomColor.ThemeOrange];
     const colorThemeOrangeNoHash = removeHashFromColor(colorThemeOrangeDefault);
 
-    test("it should return the configured custom 'theme-orange' color ('removeHash' is 'false')", () => {
+    test("should return the configured custom 'theme-orange' color ('removeHash' is 'false')", () => {
       // By default 'removeHash' is set to be 'false'.
       expect(getColorThemeOrange(/* false */)).toEqual({
         DEFAULT: colorThemeOrangeDefault.DEFAULT,
@@ -72,7 +72,7 @@ describe("utils/tailwind", () => {
       });
     });
 
-    test("it should return the configured custom 'theme-orange' color ('removeHash' is 'true')", () => {
+    test("should return the configured custom 'theme-orange' color ('removeHash' is 'true')", () => {
       expect(getColorThemeOrange(true)).toEqual({
         DEFAULT: colorThemeOrangeNoHash.DEFAULT,
         light: colorThemeOrangeNoHash.light,

@@ -8,9 +8,13 @@ export enum Route {
 }
 
 export function getOverviewRouteForProject(projectId?: string | number) {
-  if (isValidString(projectId) || isValidNumber(projectId)) {
-    return Route.Overview.replace("{id}", `${projectId}`);
+  if (!isValidString(projectId) && !isValidNumber(projectId)) {
+    return Route.NotFound;
   }
 
-  return Route.NotFound;
+  if (isValidNumber(projectId) && (projectId as number) <= 0) {
+    return Route.NotFound;
+  }
+
+  return Route.Overview.replace("{id}", `${projectId}`);
 }

@@ -19,7 +19,7 @@ describe("utils/mapbox", () => {
   });
 
   describe("getStaticMapURLWithMarker()", () => {
-    test("it should return the image URL of map (of given size) showing a marker at the given coordinates with default 'color', 'label', 'scale' and 'zoom'", () => {
+    test("should return the image URL of map (of given size) showing a marker at the given coordinates with default 'color', 'label', 'scale' and 'zoom'", () => {
       expect(
         getStaticMapURLWithMarker({
           longitude: 151.2093,
@@ -32,7 +32,7 @@ describe("utils/mapbox", () => {
       );
     });
 
-    test("it should return the image URL of map (of given size) showing a marker at the given coordinates with custom 'color', 'label', 'scale' and 'zoom'", () => {
+    test("should return the image URL of map (of given size) showing a marker at the given coordinates with custom 'color', 'label', 'scale' and 'zoom'", () => {
       expect(
         getStaticMapURLWithMarker({
           longitude: 147.5146,
@@ -51,7 +51,7 @@ describe("utils/mapbox", () => {
   });
 
   describe("getStaticMapURLWithPolygon()", () => {
-    test("it should return the image URL of map (of given size) showing a polygon drawn at the given 'geoJSON' coordinates with default 'scale' and 'zoom'", () => {
+    test("should return the image URL of map (of given size) showing a polygon drawn at the given 'geoJSON' coordinates with default 'scale' and 'zoom'", () => {
       expect(
         getStaticMapURLWithPolygon({
           geoJSON: testGeoJSONString,
@@ -65,7 +65,7 @@ describe("utils/mapbox", () => {
       );
     });
 
-    test("it should return the image URL of map (of given size) showing a polygon drawn at the given 'geoJSON' coordinates with custom 'scale' and 'zoom'", () => {
+    test("should return the image URL of map (of given size) showing a polygon drawn at the given 'geoJSON' coordinates with custom 'scale' and 'zoom'", () => {
       expect(
         getStaticMapURLWithPolygon({
           geoJSON: testGeoJSONString,
